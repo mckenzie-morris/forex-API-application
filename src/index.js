@@ -1,5 +1,6 @@
 import express from 'express';
 import axios from 'axios';
+import 'animate.css';
 
 const app = express();
 const PORT = 3000;
@@ -33,3 +34,5 @@ app.use((error, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Use: https://www.exchangerate-api.com/docs/overview
