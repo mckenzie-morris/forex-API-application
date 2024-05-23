@@ -1,4 +1,4 @@
-import path from 'path';
+import path, { resolve } from 'path';
 import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
@@ -8,10 +8,10 @@ const __dirname = path.dirname(__filename);
 
 export default {
   mode: 'development',
-    /* Can set multiple entry points like:
+  /* Can set multiple entry points like:
         
     entry: {
-        bundle.js: [path.resolve(__dirname, 'src/index.js'), path.resolve(__dirname, 'main.js')]
+        bundle.js: [path.resolve(__dirname, 'src/main.js'), path.resolve(__dirname, 'other.js')]
     }
 
     // if multiple entry points, change:
@@ -22,25 +22,29 @@ export default {
     }
 
     */
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle[contenthash].js',
   },
+
   resolve: {
     fallback: {
-      "zlib": "browserify-zlib",
-      "querystring": "querystring-es3",
-      "path": "path-browserify",
-      "crypto": "crypto-browserify",
-      "fs": false,
-      "net": false,
-      "stream": "stream-browserify",
-      "http": "stream-http",
-      "async_hooks": false,
-      "string_decoder": "string_decoder",
+      url: false,
+      path: false,
+      util: false,
+      stream: false,
+      buffer: false,
+      string_decoder: false,
+      querystring: false,
+      http: false,
+      crypto: false,
+      zlib: false,
+      fs: false,
+      net: false,
     },
   },
+
   module: {
     rules: [
       {
@@ -49,17 +53,20 @@ export default {
       },
       {
         test: /\.ejs$/,
-        use: ['ejs-loader'],
+        loader: 'ejs-loader',
+        options: {
+          esModule: true,
+          variable: 'data', // Define a variable name for template data
+        },
       },
     ],
   },
-   /* The html-webpack-plugin is used to process the EJS template and generate an 
+  /* The html-webpack-plugin is used to process the EJS template and generate an 
   index.html file in the dist directory. */
   plugins: [
     new HtmlWebpackPlugin({
       template: './views/index.ejs',
-      filename: 'index.html',  
+      filename: 'index.html',
     }),
   ],
 };
-

@@ -1,99 +1,58 @@
-<head><script defer src="bundle5601bf1143da66a42bae.js"></script></head>Html Webpack Plugin:
-<pre>
-  Error: Child compilation failed:
-  Module build failed (from ./node_modules/ejs-loader/index.js):
-  Error: 
-        To support the 'esModule' option, the 'variable' option must be passed to avoid 'with' statements
-        in the compiled template to be strict mode compatible. Please see https://github.com/lodash/lodash/issues/3709#issuecomment-375898111.
-        To enable CommonJS, please set the 'esModule' option to false.
-      
-      at module.exports (/home/mckenzie1111/forex-API-application/node_modules/ejs-loader/index.js:12:11)
-  ModuleBuildError: Module build failed (from ./node_modules/ejs-loader/index.js):
-  Error: 
-        To support the 'esModule' option, the 'variable' option must be passed to avoid 'with' statements
-        in the compiled template to be strict mode compatible. Please see https://github.com/lodash/lodash/issues/3709#issuecomment-375898111.
-        To enable CommonJS, please set the 'esModule' option to false.
-      
-      at module.exports (/home/mckenzie1111/forex-API-application/node_modules/ejs-loader/index.js:12:11)
-      at processResult (/home/mckenzie1111/forex-API-application/node_modules/webpack/lib/NormalModule.js:841:19)
-      at /home/mckenzie1111/forex-API-application/node_modules/webpack/lib/NormalModule.js:966:5
-      at /home/mckenzie1111/forex-API-application/node_modules/loader-runner/lib/LoaderRunner.js:400:11
-      at /home/mckenzie1111/forex-API-application/node_modules/loader-runner/lib/LoaderRunner.js:252:18
-      at runSyncOrAsync (/home/mckenzie1111/forex-API-application/node_modules/loader-runner/lib/LoaderRunner.js:156:3)
-      at iterateNormalLoaders (/home/mckenzie1111/forex-API-application/node_modules/loader-runner/lib/LoaderRunner.js:251:2)
-      at /home/mckenzie1111/forex-API-application/node_modules/loader-runner/lib/LoaderRunner.js:224:4
-      at /home/mckenzie1111/forex-API-application/node_modules/webpack/lib/NormalModule.js:920:15
-      at Array.eval (eval at create (/home/mckenzie1111/forex-API-application/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:12:1)
-      at runCallbacks (/home/mckenzie1111/forex-API-application/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:45:15)
-  
-  - index.js:12 module.exports
-    [forex-API-application]/[ejs-loader]/index.js:12:11
-  
-  - ModuleBuildError: Module build failed (from ./node_modules/ejs-loader/index.js):
-  
-  - Error:
-  
-  - To support the 'esModule' option, the 'variable' option must be passed to avoid 'with' statements
-  
-  - in the compiled template to be strict mode compatible. Please see https://github.com/lodash/lodash/issues/3709#issuecomment-375898111.
-  
-  - To enable CommonJS, please set the 'esModule' option to false.
-  
-  - index.js:12 module.exports
-    [forex-API-application]/[ejs-loader]/index.js:12:11
-  
-  - NormalModule.js:841 processResult
-    [forex-API-application]/[webpack]/lib/NormalModule.js:841:19
-  
-  - NormalModule.js:966 
-    [forex-API-application]/[webpack]/lib/NormalModule.js:966:5
-  
-  - LoaderRunner.js:400 
-    [forex-API-application]/[loader-runner]/lib/LoaderRunner.js:400:11
-  
-  - LoaderRunner.js:252 
-    [forex-API-application]/[loader-runner]/lib/LoaderRunner.js:252:18
-  
-  - LoaderRunner.js:156 runSyncOrAsync
-    [forex-API-application]/[loader-runner]/lib/LoaderRunner.js:156:3
-  
-  - LoaderRunner.js:251 iterateNormalLoaders
-    [forex-API-application]/[loader-runner]/lib/LoaderRunner.js:251:2
-  
-  - LoaderRunner.js:224 
-    [forex-API-application]/[loader-runner]/lib/LoaderRunner.js:224:4
-  
-  - NormalModule.js:920 
-    [forex-API-application]/[webpack]/lib/NormalModule.js:920:15
-  
-  
-  - CachedInputFileSystem.js:45 runCallbacks
-    [forex-API-application]/[enhanced-resolve]/lib/CachedInputFileSystem.js:45:15
-  
-  - child-compiler.js:174 
-    [forex-API-application]/[html-webpack-plugin]/lib/child-compiler.js:174:18
-  
-  - Compiler.js:605 finalCallback
-    [forex-API-application]/[webpack]/lib/Compiler.js:605:5
-  
-  - Compiler.js:640 
-    [forex-API-application]/[webpack]/lib/Compiler.js:640:11
-  
-  - Compiler.js:1329 
-    [forex-API-application]/[webpack]/lib/Compiler.js:1329:17
-  
-  
-  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
-    [forex-API-application]/[tapable]/lib/Hook.js:18:14
-  
-  - Compiler.js:1325 
-    [forex-API-application]/[webpack]/lib/Compiler.js:1325:33
-  
-  - Compilation.js:2900 finalCallback
-    [forex-API-application]/[webpack]/lib/Compilation.js:2900:11
-  
-  - Compilation.js:3209 
-    [forex-API-application]/[webpack]/lib/Compilation.js:3209:11
-  
-  
-</pre>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mckenzie's Forex App</title>
+    <link rel="stylesheet" href="main.css" />
+  <script defer src="bundlefa550a0b6e03827d0996.js"></script></head>
+  <body>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal animate__animated animate__flash"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="bundlefa550a0b6e03827d0996.js" type="module"></script>
+  </body>
+</html>
