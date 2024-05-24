@@ -20,7 +20,7 @@ export default {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js' 
     }
-
+    🚩🚩🚩NOTE: '[name]' is a variable that corresponds to the entry point key 🚩🚩🚩
     */
   entry: path.resolve(__dirname, 'src/main.js'),
   output: {
@@ -48,9 +48,13 @@ export default {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.scss$|\.css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
       {
         test: /\.ejs$/,
         loader: 'ejs-loader',
