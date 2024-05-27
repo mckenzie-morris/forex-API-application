@@ -8,20 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default {
   mode: 'development',
-  /* Can set multiple entry points like:
-        
-    entry: {
-        bundle.js: [path.resolve(__dirname, 'src/main.js'), path.resolve(__dirname, 'other.js')]
-    }
 
-    // if multiple entry points, change:
-
-    output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js' 
-    }
-    🚩🚩🚩NOTE: '[name]' is a variable that corresponds to the entry point key 🚩🚩🚩
-    */
   entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -72,7 +59,8 @@ export default {
     ],
   },
   /* html-webpack-plugin is used to process the EJS template and generate an 
-  index.html file in the dist directory. */
+  index.html file in the dist directory. Generates an HTML5 file that includes 
+  all webpack bundles in the body using script tags. */
   plugins: [
     new HtmlWebpackPlugin({
       template: './views/index.ejs',
