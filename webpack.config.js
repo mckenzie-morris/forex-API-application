@@ -33,9 +33,14 @@ export default {
     },
   },
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'), // serve contents of 'dist' folder
-    },
+    static: [
+      {
+        directory: path.resolve(__dirname, 'dist'), // serve contents of 'dist' folder
+      },
+      {
+        directory: path.resolve(__dirname, 'public'), // serve contents of 'public' folder
+      },
+    ],
     port: 3333, // set the port to operate dev server from
     open: true, // upon 'npm run dev' command, open a browser window at the corresponding port
     hot: true, // use hot reloading
