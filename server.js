@@ -1,13 +1,15 @@
 import express from 'express';
 import axios from 'axios';
 import path from 'path';
-import {fileURLToPath} from 'url'
+import { fileURLToPath } from 'url';
+import 'dotenv/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
+const API_KEY = process.env.API_KEY;
 
 // serve static files from 'public' folder in root directory
 app.use(express.static('public'));
@@ -22,7 +24,9 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  console.log('something');
+  const theMessage = 'Ayyyyy'
+  res.render('index.ejs', {data: theMessage});
 });
 
 // Any route not defined is 404'ed
