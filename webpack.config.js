@@ -1,21 +1,21 @@
-import path, { resolve } from 'path';
+import path from 'path';
 import { fileURLToPath } from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-// Needed to handle __dirname in ES modules
+// handle __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
   mode: 'development',
-
   entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle[contenthash].js',
-    clean: true,
+    clean: true, // Clean the output directory before emit.
   },
-
+  // ignore Node.js core modules
   resolve: {
     fallback: {
       url: false,
@@ -45,7 +45,6 @@ export default {
     open: true, // upon 'npm run dev' command, open a browser window at the corresponding port
     hot: true, // use hot reloading
     compress: true, // enable GZIP compression
-    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -61,6 +60,16 @@ export default {
           variable: 'data', // Define a variable name for template data
         },
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
     ],
   },
   /* html-webpack-plugin is used to process the EJS template and generate an 
@@ -71,5 +80,6 @@ export default {
       template: './views/index.ejs',
       filename: 'index.html',
     }),
+    // new BundleAnalyzerPlugin(),
   ],
 };

@@ -3,8 +3,8 @@ import '../public/main.scss';
 import $ from 'jquery';
 import 'bootstrap';
 
-const lightThemeImgSrc = '/light-mode-day-sun.svg';
-const darkThemeImgSrc = '/dark-mode-night-moon.svg';
+const lightThemeImgSrc = 'light-mode-day-sun.svg';
+const darkThemeImgSrc = 'dark-mode-night-moon.svg';
 
 // initialize the html to dark theme
 $('html').attr('data-bs-theme', 'dark');
