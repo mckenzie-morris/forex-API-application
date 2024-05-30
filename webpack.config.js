@@ -1,91 +1,64 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 // handle __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default {
-  mode: 'development',
-  entry: path.resolve(__dirname, 'src/main.js'),
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name]-bundle.js',
-    clean: true, // Clean the output directory before emit.
-  },
-  // ignore Node.js core modules
-  resolve: {
-    fallback: {
-      url: false,
-      path: false,
-      util: false,
-      stream: false,
-      buffer: false,
-      string_decoder: false,
-      querystring: false,
-      http: false,
-      crypto: false,
-      zlib: false,
-      fs: false,
-      net: false,
+/* in the context of Webpack, env is an object that contains environment 
+variables passed to the configuration. */
+export default (env) => {
+  const plugins = [];
+/* The ..."--env analyze=true" part of the "analyze" script 
+tells Webpack to pass an object { analyze: true } as the env parameter 
+to the configuration function. */
+  if (env && env.analyze) {
+    plugins.push(new BundleAnalyzerPlugin());
+  }
+
+  return {
+    mode: 'development',
+    entry: path.resolve(__dirname, 'src/main.js'),
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name]-bundle.js',
+      clean: true, // Clean the output directory before emit.
     },
-  },
-  devServer: {
-    static: [
-      {
-        directory: path.resolve(__dirname, 'dist'), // serve contents of 'dist' folder
+    resolve: {
+      fallback: {
+        url: false,
+        path: false,
+        util: false,
+        stream: false,
+        buffer: false,
+        string_decoder: false,
+        querystring: false,
+        http: false,
+        crypto: false,
+        zlib: false,
+        fs: false,
+        net: false,
       },
-      {
-        directory: path.resolve(__dirname, 'public'), // serve contents of 'public' folder
-      },
-    ],
-    port: 3333, // set the port to operate dev server from
-    open: true, // upon 'npm run dev' command, open a browser window at the corresponding port
-    hot: true, // use hot reloading
-    compress: true, // enable GZIP compression
-    watchFiles: ['./views/**/*.ejs'],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.scss$|\.css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.ejs$/,
-        use: [
-          // {
-          //   loader: 'ejs-loader',
-          //   options: {
-          //     esModule: true,
-          //     variable: 'data', // Define a variable name for template data
-          //   },
-          // },
-          'ejs-compiled-loader'
-        ],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.scss$|\.css$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
           },
         },
-      },
-    ],
-  },
-  /* html-webpack-plugin is used to process the EJS template and generate an 
-  index.html file in the dist directory. Generates an HTML5 file that includes 
-  all webpack bundles in the body using script tags. */
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './views/index.ejs',
-      filename: 'index.html',
-    }),
-    // new BundleAnalyzerPlugin(),
-  ],
+      ],
+    },
+    plugins: plugins,
+  };
 };
