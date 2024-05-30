@@ -12,7 +12,7 @@ export default {
   entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name]-bundle.js',
     clean: true, // Clean the output directory before emit.
   },
   // ignore Node.js core modules
@@ -45,6 +45,7 @@ export default {
     open: true, // upon 'npm run dev' command, open a browser window at the corresponding port
     hot: true, // use hot reloading
     compress: true, // enable GZIP compression
+    watchFiles: ['./views/**/*.ejs'],
   },
   module: {
     rules: [
@@ -54,11 +55,16 @@ export default {
       },
       {
         test: /\.ejs$/,
-        loader: 'ejs-loader',
-        options: {
-          esModule: true,
-          variable: 'data', // Define a variable name for template data
-        },
+        use: [
+          // {
+          //   loader: 'ejs-loader',
+          //   options: {
+          //     esModule: true,
+          //     variable: 'data', // Define a variable name for template data
+          //   },
+          // },
+          'ejs-compiled-loader'
+        ],
       },
       {
         test: /\.js$/,
@@ -75,11 +81,11 @@ export default {
   /* html-webpack-plugin is used to process the EJS template and generate an 
   index.html file in the dist directory. Generates an HTML5 file that includes 
   all webpack bundles in the body using script tags. */
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: './views/index.ejs',
-  //     filename: 'index.html',
-  //   }),
-  //   // new BundleAnalyzerPlugin(),
-  // ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './views/index.ejs',
+      filename: 'index.html',
+    }),
+    // new BundleAnalyzerPlugin(),
+  ],
 };
