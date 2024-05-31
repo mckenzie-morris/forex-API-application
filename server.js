@@ -24,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  console.log('something');
   const theMessage = 'Ayyyyy'
   res.render('index.ejs', {data: theMessage});
 });

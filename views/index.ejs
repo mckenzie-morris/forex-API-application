@@ -18,9 +18,11 @@
         />
       </button>
     </div>
-    <% if (locals.data) { %>
-    <div class="d-flex justify-content-center"><h1><%= data %></h1></div>
-    <% } %>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <% if (locals.data) { %>
+      <h1><%= data %></h1>
+      <% } %>
+    </div>
     <script src="main-bundle.js"></script>
   </body>
 </html>
