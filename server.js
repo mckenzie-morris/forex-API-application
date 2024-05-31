@@ -46,4 +46,10 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// Use: https://www.exchangerate-api.com/docs/overview
+/*
+
+-Use: https://www.exchangerate-api.com/docs/overview 
+
+-ISO 4217 Three Letter Currency
+
+*/
