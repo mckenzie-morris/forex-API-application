@@ -7,3 +7,22 @@
 
 // Then add additional custom code here
 
+#currencySelector {
+    max-height: 400%;
+    overflow-y: auto;
+}
+
+#primaryContainer {
+    background: rgba( 255, 255, 255, 0 );
+    box-shadow:
+  10.3px 3.4px 6.9px rgba(0, 0, 0, 0.155),
+  26.1px 8.7px 17.4px rgba(0, 0, 0, 0.222),
+  53.2px 17.7px 35.4px rgba(0, 0, 0, 0.278),
+  109.5px 36.5px 73px rgba(0, 0, 0, 0.345),
+  300px 100px 200px rgba(0, 0, 0, 0.5)
+;
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
