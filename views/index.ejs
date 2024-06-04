@@ -8,7 +8,11 @@
   <body>
     <!-- theme control -->
     <div id="themeToggleDiv" class="d-flex justify-content-end">
-      <button id="theme_toggle" type="button" class="btn btn-outline-primary shadowed">
+      <button
+        id="theme_toggle"
+        type="button"
+        class="btn btn-outline-primary shadowed"
+      >
         <img
           id="theme_toggle_img"
           src="light-mode-day-sun.svg"
@@ -18,19 +22,11 @@
         />
       </button>
     </div>
-    <div id="fullHeightContainer" class="d-flex justify-content-center align-items-center vh-100">
-     <div id="primaryContainer" class="container-md d-flex justify-content-center h-50 mx-2 shadowed">
-        <div class="dropdown-center">
-          <button style="color: aqua;" class="btn btn-secondary dropdown-toggle shadowed my-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Select a Currency
-          </button>
-          <ul id="currencySelector" class="dropdown-menu">
-            <% for (let elmt of currencies) { %>
-            <li><a class="dropdown-item" href="#"><%=elmt%></a></li>
-            <% } %>
-          </ul>
-        </div>
-      </div>
+    <div
+      id="fullHeightContainer"
+      class="d-flex justify-content-center align-items-center vh-100"
+    >
+      <%- include('./partials/primaryContainer.ejs') %>
     </div>
     <script src="main-bundle.js"></script>
   </body>

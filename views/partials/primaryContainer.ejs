@@ -1,0 +1,21 @@
+<div
+  id="primaryContainer"
+  class="container-md d-flex justify-content-center h-50 mx-2 shadowed"
+>
+  <div class="dropdown-center">
+    <button
+      class="btn btn-secondary dropdown-toggle my-2 shadowed"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Select a Currency
+    </button>
+
+    <ul id="currencySelector" class="dropdown-menu">
+      <% for (let elmt of currencies) { %>
+      <li><a class="dropdown-item" href="#"><%=elmt%></a></li>
+      <% } %>
+    </ul>
+  </div>
+</div>
