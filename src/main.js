@@ -1,4 +1,5 @@
 import 'animate.css';
+import '../node_modules/animate.css/animate.css';
 import '../public/main.scss';
 import $ from 'jquery';
 import 'bootstrap';
