@@ -34,7 +34,14 @@ $('#theme_toggle').on('click', () => {
   }
 });
 
+let rightOrLeft = null;
+
+$('#rightDropdown').on('click', () => {
+  let rightOrLeft = 'right'
+});
+
 $('li').on('click', function () {
   const listItemElmt = $(this).data('list_item_elmt');
-  console.log(listItemElmt)
-})
+  $('#rightInput').val(listItemElmt);
+  console.log(listItemElmt);
+});

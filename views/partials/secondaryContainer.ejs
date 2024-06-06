@@ -2,9 +2,10 @@
 <form>
   <div id="secondaryContainer" class="container row">
     <div class="col-sm">
-      <!-- dropdown button -->
+      <!-- (Left) dropdown button -->
       <div class="input-group my-3 dropdown-center">
         <button
+          id="rightDropdown"
           class="btn btn-outline-primary dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
@@ -24,6 +25,7 @@
           <% } %>
         </ul>
         <input
+          id="rightInput"
           type="text"
           class="form-control border-primary text-primary bg-transparent text-center"
           aria-label="Text input with dropdown button"
@@ -32,7 +34,7 @@
       <!-- End dropdown button -->
     </div>
     <div class="col-sm">
-      <!-- dropdown button -->
+      <!-- (Right) dropdown button -->
       <div class="input-group my-3 dropdown-center">
         <input
           type="text"
