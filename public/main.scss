@@ -8,10 +8,17 @@
 // Then add additional custom code here
 
 
-
 #themeToggleDiv {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 
+#secondaryContainer {
+  max-width: 720px;
+  min-width: 340px;
+}
+
+li:hover {
+ cursor: pointer;
+}

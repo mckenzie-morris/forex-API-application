@@ -1,6 +1,55 @@
-<div class="container-fluid d-flex flex-column align-items-center ">
-  <div class="text-center" style="margin-top: 50px;">
-    <h1 class="display-1">Welcome to My Currency Converter</h1>
+<div class="container-fluid d-flex flex-column align-items-center">
+  <!-- Currency symbols SVG -->
+  <div id="symbols"  style="position: absolute; z-index: -1; margin-top: 150px; overflow: hidden;">
+    <img src="currencySymbols.svg" alt="Currency Symbols">
   </div>
-  <div style="height: 250px; width: 250px; margin-top: 50px;"><h1 class="text-center">hi</h1></div>
+  <!-- Welcome header -->
+  <div class="text-center" style="margin-top: 50px">
+    <h1 class="display-1 text-primary">Welcome to My Currency Converter</h1>
+  </div>
+  <div class="my-5">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-lg"
+      data-bs-toggle="modal"
+      data-bs-target="#codesModal"
+    >
+      Currency Codes
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade animate__animated animate__zoomIn"
+      id="codesModal"
+      tabindex="-1"
+      aria-labelledby="codesModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('secondaryContainer.ejs') %>
 </div>
