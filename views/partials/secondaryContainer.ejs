@@ -1,53 +1,66 @@
-  <!-- Currency form -->
-  <div id="secondaryContainer" class="container row">
-    <div class="col-sm">
-      <!-- dropdown button -->
-      <div class="input-group my-3">
-        <button
-          class="btn btn-outline-primary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Currency to Convert
-        </button>
-        <ul class="dropdown-menu">
-            <% for (let elmt of currencies) { %>
-            <li><a class="dropdown-item"><%= elmt %></a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <% } %> 
-        </ul>
-        <input
-          type="text"
-          class="form-control border-primary text-primary bg-transparent"
-          aria-label="Text input with dropdown button"
-        />
-      </div>
-      <!-- End dropdown button -->
+<!-- Currency form -->
+<div id="secondaryContainer" class="container row">
+  <div class="col-sm">
+    <!-- dropdown button -->
+    <div class="input-group my-3 dropdown-center">
+      <button
+        class="btn btn-outline-primary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Currency to Convert
+      </button>
+      <ul
+        class="dropdown-menu text-center"
+        style="max-height: 200px; overflow-y: auto"
+      >
+        <% for (let elmt of currencies) { %>
+        <li data-list_item_elmt="<%=elmt%>" class="dropdown-item">
+          <%= elmt %>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <% } %>
+      </ul>
+      <input
+        type="text"
+        class="form-control border-primary text-primary bg-transparent text-center"
+        aria-label="Text input with dropdown button"
+      />
     </div>
-    <div class="col-sm">
-      <!-- dropdown button -->
-      <div class="input-group my-3">
-        <input
-          type="text"
-          class="form-control border-primary text-primary bg-transparent"
-          aria-label="Text input with dropdown button"
-        />
-        <button
-          class="btn btn-outline-primary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Convert to Currency
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end">
-            <% for (let elmt of currencies) { %>
-                <li><a class="dropdown-item"><%= elmt %></a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <% } %> 
-        </ul>
-      </div>
-      <!-- End dropdown button -->
-    </div>
+    <!-- End dropdown button -->
   </div>
+  <div class="col-sm">
+    <!-- dropdown button -->
+    <div class="input-group my-3 dropdown-center">
+      <input
+        type="text"
+        class="form-control border-primary text-primary bg-transparent text-center"
+        aria-label="Text input with dropdown button"
+      />
+      <button
+        class="btn btn-outline-primary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Convert to Currency
+      </button>
+      <ul
+        class="dropdown-menu text-center"
+        style="max-height: 200px; overflow-y: auto"
+      >
+        <% for (let elmt of currencies) { %>
+        <li data-list_item_elmt="<%=elmt%>" class="dropdown-item">
+          <%= elmt %>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <% } %>
+      </ul>
+    </div>
+    <!-- End dropdown button -->
+  </div>
+</div>
+<div class="my-5">
+  <button type="button" class="btn btn-outline-primary btn-lg w-100">Submit</button>
+</div>

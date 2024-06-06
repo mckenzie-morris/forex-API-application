@@ -22,3 +22,13 @@
 li:hover {
  cursor: pointer;
 }
+
+button {
+  backdrop-filter: blur( 15px );
+  -webkit-backdrop-filter: blur( 15px );
+}
+
+input {
+  backdrop-filter: blur( 15px );
+  -webkit-backdrop-filter: blur( 15px );
+}
