@@ -4,17 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mckenzie's Forex App</title>
-
+    <!-- Remember to remove!!!!!!!!!!!!!!!!!!!!! -->
+    <link rel="stylesheet" href="main.css" />
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
   </head>
-  <body style="overflow: hidden;">
-
+  <body style="overflow: hidden">
     <!-- theme control -->
     <div id="themeToggleDiv" class="d-flex justify-content-end">
-      <button
-        id="theme_toggle"
-        type="button"
-        class="btn btn-outline-primary"
-      >
+      <button id="theme_toggle" type="button" class="btn btn-outline-primary">
         <img
           id="theme_toggle_img"
           src="light-mode-day-sun.svg"
@@ -25,9 +22,12 @@
       </button>
     </div>
 
-      <%- include('./partials/primaryContainer.ejs') %>
-
-
-    <script src="main-bundle.js"></script>
+    <%- include('./partials/primaryContainer.ejs') %>
+    <!-- Remember to remove!!!!!!!!!!!!!!!!!!!!! -->
+     <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="main.js"></script>
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <!-- <script src="main-bundle.js"></script> -->
   </body>
 </html>

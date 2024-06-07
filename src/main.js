@@ -1,8 +1,8 @@
-import 'animate.css';
-import '../node_modules/animate.css/animate.css';
-import '../public/main.scss';
-import $ from 'jquery';
-import 'bootstrap';
+// import 'animate.css';
+// import '../node_modules/animate.css/animate.css';
+// import '../public/main.scss';
+// import $ from 'jquery';
+// import 'bootstrap';
 
 const lightThemeImgSrc = 'light-mode-day-sun.svg';
 const darkThemeImgSrc = 'dark-mode-night-moon.svg';
@@ -34,14 +34,11 @@ $('#theme_toggle').on('click', () => {
   }
 });
 
-let rightOrLeft = null;
-
-$('#rightDropdown').on('click', () => {
-  let rightOrLeft = 'right'
-});
 
 $('li').on('click', function () {
   const listItemElmt = $(this).data('list_item_elmt');
-  $('#rightInput').val(listItemElmt);
+  const whichInput = $(this).data('which_input');
+  console.log(whichInput);
   console.log(listItemElmt);
+  $(whichInput).val(listItemElmt);
 });

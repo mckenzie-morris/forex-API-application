@@ -1,11 +1,11 @@
 <!-- Currency form -->
-<form>
+<form action="/convert" method="POST">
   <div id="secondaryContainer" class="container row">
     <div class="col-sm">
       <!-- (Left) dropdown button -->
       <div class="input-group my-3 dropdown-center">
         <button
-          id="rightDropdown"
+          id="leftDropdown"
           class="btn btn-outline-primary dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
@@ -18,14 +18,19 @@
           style="max-height: 200px; overflow-y: auto"
         >
           <% for (let elmt of currencies) { %>
-          <li data-list_item_elmt="<%=elmt%>" class="dropdown-item">
+          <li
+            data-list_item_elmt="<%=elmt%>"
+            data-which_input="#leftInput"
+            class="dropdown-item"
+          >
             <%= elmt %>
           </li>
           <li><hr class="dropdown-divider" /></li>
           <% } %>
         </ul>
         <input
-          id="rightInput"
+          id="leftInput"
+          name="leftCurrency"
           type="text"
           class="form-control border-primary text-primary bg-transparent text-center"
           aria-label="Text input with dropdown button"
@@ -37,6 +42,8 @@
       <!-- (Right) dropdown button -->
       <div class="input-group my-3 dropdown-center">
         <input
+          id="rightInput"
+          name="rightCurrency"
           type="text"
           class="form-control border-primary text-primary bg-transparent text-center"
           aria-label="Text input with dropdown button"
@@ -54,7 +61,11 @@
           style="max-height: 200px; overflow-y: auto"
         >
           <% for (let elmt of currencies) { %>
-          <li data-list_item_elmt="<%=elmt%>" class="dropdown-item">
+          <li
+            data-list_item_elmt="<%=elmt%>"
+            data-which_input="#rightInput"
+            class="dropdown-item"
+          >
             <%= elmt %>
           </li>
           <li><hr class="dropdown-divider" /></li>
@@ -63,10 +74,22 @@
       </div>
       <!-- End dropdown button -->
     </div>
-    <div class="d-flex justify-content-center my-5">
-      <button type="button" class="btn btn-outline-primary btn-lg">
+    <!-- Amount input -->
+    <div class="my-5">
+      <input
+        name="amount"
+        class="form-control border-primary text-primary bg-transparent text-center"
+        placeholder="Enter amount here..."
+      />
+    </div>
+    <!-- Submit button -->
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-outline-primary btn-lg">
         Submit
       </button>
     </div>
   </div>
 </form>
+<% if (locals.amount) { %>
+  <h1> <%=locals.amount %> </h1>
+<%}%>
