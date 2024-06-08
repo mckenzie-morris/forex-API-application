@@ -13,6 +13,9 @@ const PORT = 3000;
 const API_KEY = process.env.API_KEY;
 
 let convertedAmount = undefined;
+let leftCurrency = undefined;
+let rightCurrency = undefined;
+let baseAmount = undefined;
 
 // serve static files from 'public' folder in root directory
 app.use(express.static('public'));
@@ -34,20 +37,20 @@ app.get('/', (req, res) => {
   // console.dir(currenciesArr, { maxArrayLength: null });
   res.render('index.ejs', {
     currencies: currenciesArr,
+    baseAmount: baseAmount,
+    leftCurrency: leftCurrency,
+    rightCurrency: rightCurrency,
     amount: convertedAmount,
   });
 });
 
 app.post('/convert', async (req, res) => {
-  const leftCurrency = req.body.leftCurrency;
-  const rightCurrency = req.body.rightCurrency;
-  const amount = req.body.amount;
-  console.log(leftCurrency);
-  console.log(rightCurrency);
-  console.log(amount);
+  leftCurrency = req.body.leftCurrency;
+  rightCurrency = req.body.rightCurrency;
+  baseAmount = req.body.amount;
   try {
     const response = await axios.get(
-      `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${leftCurrency}/${rightCurrency}/${amount}`
+      `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${leftCurrency}/${rightCurrency}/${baseAmount}`
     );
     console.log(response.data);
     convertedAmount = response.data.conversion_result;

@@ -13,10 +13,7 @@
         >
           Currency to Convert
         </button>
-        <ul
-          class="dropdown-menu text-center"
-          style="max-height: 200px; overflow-y: auto"
-        >
+        <ul class="dropdown-menu text-center">
           <% for (let elmt of currencies) { %>
           <li
             data-list_item_elmt="<%=elmt%>"
@@ -56,10 +53,7 @@
         >
           Convert to Currency
         </button>
-        <ul
-          class="dropdown-menu text-center"
-          style="max-height: 200px; overflow-y: auto"
-        >
+        <ul class="dropdown-menu text-center">
           <% for (let elmt of currencies) { %>
           <li
             data-list_item_elmt="<%=elmt%>"
@@ -90,6 +84,10 @@
     </div>
   </div>
 </form>
+<div class="container d-flex justify-content-center my-5">
 <% if (locals.amount) { %>
-  <h1> <%=locals.amount %> </h1>
-<%}%>
+  <h1 class="text-primary"><%= baseAmount %> <%= leftCurrency %> is equivalent to <%=amount %> <%= rightCurrency %></h1>
+<%}  else { %>
+  <h1 class="text-primary">Select currencies, enter an amount to be converted, then click submit!</h1>
+  <% } %>
+</div>

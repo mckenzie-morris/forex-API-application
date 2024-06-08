@@ -7,6 +7,17 @@
 
 // Then add additional custom code here
 
+#welcomeHeader {
+  margin-top: 50px;
+}
+
+#symbols {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
 
 #themeToggleDiv {
   position: absolute;
@@ -20,15 +31,24 @@
 }
 
 li:hover {
- cursor: pointer;
+  cursor: pointer;
+}
+
+body {
+  overflow: hidden;
 }
 
 button {
-  backdrop-filter: blur( 15px );
-  -webkit-backdrop-filter: blur( 15px );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 input {
-  backdrop-filter: blur( 15px );
-  -webkit-backdrop-filter: blur( 15px );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+ul {
+  max-height: 200px;
+  overflow-y: auto;
 }

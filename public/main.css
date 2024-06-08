@@ -11965,6 +11965,18 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+#welcomeHeader {
+  margin-top: 50px;
+}
+
+#symbols {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
 #themeToggleDiv {
   position: absolute;
   top: 5px;
@@ -11980,6 +11992,10 @@ li:hover {
   cursor: pointer;
 }
 
+body {
+  overflow: hidden;
+}
+
 button {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -11988,4 +12004,9 @@ button {
 input {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+}
+
+ul {
+  max-height: 200px;
+  overflow-y: auto;
 }
