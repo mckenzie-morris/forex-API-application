@@ -3,7 +3,7 @@ import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import 'dotenv/config';
-import currenciesArr from './currencies.js';
+import {currenciesArr, countriesArr} from './currencies.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
   // console.dir(currenciesArr, { maxArrayLength: null });
   res.render('index.ejs', {
     currencies: currenciesArr,
+    countries: countriesArr,
     baseAmount: baseAmount,
     leftCurrency: leftCurrency,
     rightCurrency: rightCurrency,

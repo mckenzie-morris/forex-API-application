@@ -6,7 +6,7 @@
       <div class="input-group my-3 dropdown-center">
         <button
           id="leftDropdown"
-          class="btn btn-outline-primary dropdown-toggle"
+          class="btn btn-outline-nightColor dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -18,7 +18,7 @@
           <li
             data-list_item_elmt="<%=elmt%>"
             data-which_input="#leftInput"
-            class="dropdown-item"
+            class="dropdown-item currCode"
           >
             <%= elmt %>
           </li>
@@ -29,7 +29,7 @@
           id="leftInput"
           name="leftCurrency"
           type="text"
-          class="form-control border-primary text-primary bg-transparent text-center"
+          class="form-control border-nightColor text-nightColor bg-transparent text-center"
           aria-label="Text input with dropdown button"
         />
       </div>
@@ -42,11 +42,11 @@
           id="rightInput"
           name="rightCurrency"
           type="text"
-          class="form-control border-primary text-primary bg-transparent text-center"
+          class="form-control border-nightColor text-nightColor bg-transparent text-center"
           aria-label="Text input with dropdown button"
         />
         <button
-          class="btn btn-outline-primary dropdown-toggle"
+          class="btn btn-outline-nightColor dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -58,7 +58,7 @@
           <li
             data-list_item_elmt="<%=elmt%>"
             data-which_input="#rightInput"
-            class="dropdown-item"
+            class="dropdown-item currCode"
           >
             <%= elmt %>
           </li>
@@ -72,13 +72,13 @@
     <div class="my-5">
       <input
         name="amount"
-        class="form-control border-primary text-primary bg-transparent text-center"
+        class="form-control border-nightColor text-nightColor bg-transparent text-center"
         placeholder="Enter amount here..."
       />
     </div>
     <!-- Submit button -->
     <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-outline-primary btn-lg">
+      <button type="submit" class="btn btn-outline-nightColor btn-lg">
         Submit
       </button>
     </div>
@@ -86,8 +86,8 @@
 </form>
 <div class="container d-flex justify-content-center my-5">
 <% if (locals.amount) { %>
-  <h1 class="text-primary"><%= baseAmount %> <%= leftCurrency %> is equivalent to <%=amount %> <%= rightCurrency %></h1>
+  <h1 class="text-nightColor"><%= baseAmount %> <%= leftCurrency %> is equivalent to <%=amount %> <%= rightCurrency %></h1>
 <%}  else { %>
-  <h1 class="text-primary">Select currencies, enter an amount to be converted, then click submit!</h1>
+  <h1 class="text-nightColor">Select currencies, enter an amount to be converted, then click submit!</h1>
   <% } %>
 </div>

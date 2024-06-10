@@ -3,7 +3,17 @@
 
 // Include any default variable overrides here (though functions won't be available)
 
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+
+$custom-colors: (
+    'dayColor': #ff7300,
+    'nightColor': #0dff00
+  );
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+  @import '../node_modules/bootstrap/scss/bootstrap';
 
 // Then add additional custom code here
 
@@ -30,13 +40,13 @@
   min-width: 340px;
 }
 
-li:hover {
+.currCode:hover {
   cursor: pointer;
 }
 
-body {
-  overflow: hidden;
-}
+  body {
+    overflow: hidden;
+  }
 
 button {
   backdrop-filter: blur(15px);
@@ -48,7 +58,20 @@ input {
   -webkit-backdrop-filter: blur(15px);
 }
 
-ul {
+.dropdown-menu {
   max-height: 200px;
   overflow-y: auto;
 }
+
+
+// theme control
+// btn-outline-primary
+
+// Welcome Header, Input text
+// text-primary
+
+// Button trigger modal, Dropdown buttons, Submit button
+// btn-outline-primary
+
+// Inputs
+// border-primary
