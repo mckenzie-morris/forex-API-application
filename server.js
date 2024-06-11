@@ -17,6 +17,10 @@ let leftCurrency = undefined;
 let rightCurrency = undefined;
 let baseAmount = undefined;
 
+
+app.use(express.static(__dirname));
+
+
 // serve static files from 'public' folder in root directory
 app.use(express.static('public'));
 
@@ -49,16 +53,17 @@ app.post('/convert', async (req, res) => {
   leftCurrency = req.body.leftCurrency;
   rightCurrency = req.body.rightCurrency;
   baseAmount = req.body.amount;
-  try {
-    const response = await axios.get(
-      `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${leftCurrency}/${rightCurrency}/${baseAmount}`
-    );
-    console.log(response.data);
-    convertedAmount = response.data.conversion_result;
-    res.redirect('/');
-  } catch (error) {
-    console.log(error);
-  }
+
+  // try {
+  //   const response = await axios.get(
+  //     `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${leftCurrency}/${rightCurrency}/${baseAmount}`
+  //   );
+  //   console.log(response.data);
+  //   convertedAmount = response.data.conversion_result;
+  //   res.redirect('/');
+  // } catch (error) {
+  //   console.log(error);
+  // }
 });
 
 // Any route not defined is 404'ed

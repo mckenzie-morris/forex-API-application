@@ -31,6 +31,10 @@
           type="text"
           class="form-control border-nightColor text-nightColor bg-transparent text-center"
           aria-label="Text input with dropdown button"
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
+          data-bs-custom-class="custom-tooltip"
+          data-bs-title="Must be Three Letters in Length"
         />
       </div>
       <!-- End dropdown button -->
@@ -44,7 +48,12 @@
           type="text"
           class="form-control border-nightColor text-nightColor bg-transparent text-center"
           aria-label="Text input with dropdown button"
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
+          data-bs-custom-class="custom-tooltip"
+          data-bs-title="Must be Three Letters in Length"
         />
+
         <button
           class="btn btn-outline-nightColor dropdown-toggle"
           type="button"
@@ -71,23 +80,37 @@
     <!-- Amount input -->
     <div class="my-5">
       <input
+        id="amountInput"
         name="amount"
         class="form-control border-nightColor text-nightColor bg-transparent text-center"
         placeholder="Enter amount here..."
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="Must be greater than 0"
       />
     </div>
     <!-- Submit button -->
     <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-outline-nightColor btn-lg">
+      <button
+        id="submitButton"
+        type="submit"
+        class="btn btn-outline-nightColor btn-lg"
+      >
         Submit
       </button>
     </div>
   </div>
 </form>
 <div class="container d-flex justify-content-center my-5">
-<% if (locals.amount) { %>
-  <h1 class="text-nightColor"><%= baseAmount %> <%= leftCurrency %> is equivalent to <%=amount %> <%= rightCurrency %></h1>
-<%}  else { %>
-  <h1 class="text-nightColor">Select currencies, enter an amount to be converted, then click submit!</h1>
+  <% if (locals.amount) { %>
+  <h1 class="text-nightColor">
+    <%= baseAmount %> <%= leftCurrency %> is equivalent to <%=amount %> <%=
+    rightCurrency %>
+  </h1>
+  <%} else { %>
+  <h1 class="text-nightColor">
+    Select currencies, enter an amount to be converted, then click submit!
+  </h1>
   <% } %>
 </div>

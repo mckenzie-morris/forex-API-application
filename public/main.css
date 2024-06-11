@@ -12158,7 +12158,7 @@ textarea.form-control-lg {
 }
 
 #symbols {
-  position: absolute;
+  position: fixed;
   z-index: -1;
   top: 50%;
   left: 50%;
@@ -12180,8 +12180,28 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 
-body {
-  overflow: hidden;
+.custom-tooltip-dark .tooltip-inner {
+  background-color: #212529; /* Example background color */
+  color: #0dff00; /* Example text color */
+  font-size: 14px; /* Example font size */
+  border: 1px solid #0dff00; /* Example outline color */
+  border-radius: 4px; /* Optional: to match the default Bootstrap tooltip border-radius */
+}
+
+.custom-tooltip-light .tooltip-inner {
+  background-color: #f8f9fa; /* Example background color */
+  color: #ff7300; /* Example text color */
+  font-size: 14px; /* Example font size */
+  border: 1px solid #ff7300; /* Example outline color */
+  border-radius: 4px; /* Optional: to match the default Bootstrap tooltip border-radius */
+}
+
+.custom-tooltip-dark .tooltip-arrow {
+  border-top-color: #212529; /* Match arrow color with background color */
+}
+
+.custom-tooltip-light .tooltip-arrow {
+  border-top-color: #f8f9fa; /* Match arrow color with background color */
 }
 
 button {
