@@ -3,14 +3,9 @@
 // import '../public/main.scss';
 // import $ from 'jquery';
 // import 'bootstrap';
-import { currenciesArr } from '/currencies.js';
 
 const lightThemeImgSrc = 'light-mode-day-sun.svg';
 const darkThemeImgSrc = 'dark-mode-night-moon.svg';
-
-let leftInputValid = false;
-let rightInputValid = false;
-let amountInputValid = false;
 
 $(() => {
   initializeTooltips();
@@ -92,56 +87,55 @@ $('#theme_toggle').on('click', () => {
   initializeTooltips();
 });
 
-
-
-$('#leftInput').on('focusout', () => {
-  const regEx = /^[a-z]+$/i;
-  const leftInput = $('#leftInput').val();
-  if ((leftInput.length && !regEx.test(leftInput)) || leftInput.length > 3) {
-    $('#leftInput').val('');
-    return alert('Please Enter a Valid Currency Code');
-  } else if (currenciesArr.includes(leftInput.toUpperCase())) {
-    $('#leftInput').val(leftInput.toUpperCase());
-    return (leftInputValid = true);
-  }
-});
-
-$('#rightInput').on('focusout', () => {
-  const regEx = /^[a-z]+$/i;
-  const rightInput = $('#rightInput').val();
-  if ((rightInput.length && !regEx.test(rightInput)) || rightInput.length > 3) {
-    $('#rightInput').val('');
-    return alert('Please Enter a Valid Currency Code');
-  } else if (currenciesArr.includes(rightInput.toUpperCase())) {
-    $('#rightInput').val(rightInput.toUpperCase());
-    return (rightInputValid = true);
-  }
-});
-
 $('#amountInput').on('focusout', () => {
   const amountInput = $('#amountInput').val();
-  if (amountInput.length && Number(amountInput) > 0) {
-    return (amountInputValid = true);
-  } else if (amountInput.length) {
+  if (amountInput.length && Number(amountInput) <= 0) {
     $('#amountInput').val('');
-    return alert('Please Enter a Valid Amount');
+    return alert('Please enter a valid amount');
   }
 });
 
+let leftInputValid;
+let rightInputValid;
+let inputAmountValid;
 
+$('#leftInput').on('input', () => {
+  leftInputValid = true;
+  if (inputAmountValid && leftInputValid && rightInputValid) {
+    $('#submitButton').prop('disabled', false);
+  }
+});
+
+$('#rightInput').on('input', () => {
+  rightInputValid = true;
+  if (inputAmountValid && leftInputValid && rightInputValid) {
+    $('#submitButton').prop('disabled', false);
+  }
+});
+
+$('#amountInput').on('change', () => {
+  if (Number($('#amountInput').val()) > 0) {
+    inputAmountValid = true;
+  } else {
+    inputAmountValid = false;
+  }
+  if (inputAmountValid && leftInputValid && rightInputValid) {
+    $('#submitButton').prop('disabled', false);
+  }
+});
 
 // populate input fields from dropdowns
 $('.currCode').on('click', function () {
   const listItemElmt = $(this).data('list_item_elmt');
   const whichInput = $(this).data('which_input');
-  if (whichInput === '#leftInput') {
-    leftInputValid = true;
-    console.log(leftInputValid)
-  }
-  else {
-    rightInputValid = true;
-    console.log(rightInputValid)
-  }
-  $(whichInput).val(listItemElmt);
+  $(whichInput).val(listItemElmt).trigger('input');
   return;
+});
+
+$('#submit_conversion').on('submit', (event) => {
+  if ($('#leftInput').val() === $('#rightInput').val()) {
+    alert('Currencies may not be the same')
+    event.preventDefault();
+    return;
+  }
 });

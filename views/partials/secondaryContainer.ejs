@@ -1,5 +1,5 @@
 <!-- Currency form -->
-<form action="/convert" method="POST">
+<form id="submit_conversion" action="/convert" method="POST">
   <div id="secondaryContainer" class="container row">
     <div class="col-sm">
       <!-- (Left) dropdown button -->
@@ -26,15 +26,12 @@
           <% } %>
         </ul>
         <input
+          readonly
           id="leftInput"
           name="leftCurrency"
           type="text"
           class="form-control border-nightColor text-nightColor bg-transparent text-center"
           aria-label="Text input with dropdown button"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          data-bs-custom-class="custom-tooltip"
-          data-bs-title="Must be Three Letters in Length"
         />
       </div>
       <!-- End dropdown button -->
@@ -43,15 +40,12 @@
       <!-- (Right) dropdown button -->
       <div class="input-group my-3 dropdown-center">
         <input
+          readonly
           id="rightInput"
           name="rightCurrency"
           type="text"
           class="form-control border-nightColor text-nightColor bg-transparent text-center"
           aria-label="Text input with dropdown button"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          data-bs-custom-class="custom-tooltip"
-          data-bs-title="Must be Three Letters in Length"
         />
 
         <button
