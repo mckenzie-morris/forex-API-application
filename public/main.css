@@ -12176,6 +12176,10 @@ textarea.form-control-lg {
   min-width: 340px;
 }
 
+#leftInput, #rightInput:hover {
+  cursor: default;
+}
+
 .currCode:hover {
   cursor: pointer;
 }

@@ -40,6 +40,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   min-width: 340px;
 }
 
+#leftInput, #rightInput:hover {
+  cursor: default;
+}
+
 .currCode:hover {
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express from 'express';
 import axios from 'axios';
 import path from 'path';
 import { fileURLToPath } from 'url';
