@@ -12,14 +12,11 @@ const app = express();
 const PORT = 3000;
 const API_KEY = process.env.API_KEY;
 
+// global variables
 let convertedAmount = undefined;
 let leftCurrency = undefined;
 let rightCurrency = undefined;
 let baseAmount = undefined;
-
-
-
-
 
 // serve static files from 'public' folder in root directory
 app.use(express.static('public'));
@@ -27,18 +24,18 @@ app.use(express.static('public'));
 // serve static files from 'node_modules' folder in root directory
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
-///////Remember to remove!!!!!!!!!!!!!!!!!!!!!///////////////////////////
+///////remember to remove!!!!!!!!!!!!!!!!!!!!!///////////////////////////
 app.use(express.static('src'));
 /////////////////////////////////////////////////////////////////////////
 
-// Serve static files from 'dist' folder
+// serve static files from 'dist' folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // parse URL-encoded data submitted by forms (makes accessible through req.body)
 app.use(express.urlencoded({ extended: true }));
 
+// render 'index.ejs' at root endpoint
 app.get('/', (req, res) => {
-  // console.dir(currenciesArr, { maxArrayLength: null });
   res.render('index.ejs', {
     currencies: currenciesArr,
     countries: countriesArr,
@@ -49,6 +46,7 @@ app.get('/', (req, res) => {
   });
 });
 
+// make (axios) get request to API and redirect to root endpoint
 app.post('/convert', async (req, res) => {
   leftCurrency = req.body.leftCurrency;
   rightCurrency = req.body.rightCurrency;
@@ -66,7 +64,7 @@ app.post('/convert', async (req, res) => {
   }
 });
 
-// Any route not defined is 404'ed
+// any route not defined is 404'ed
 app.use('*', (req, res) => {
   return res.status(404).send('404: Page not found- you silly goose');
 });
@@ -79,14 +77,7 @@ app.use((error, req, res, next) => {
   return res.status(500).send(message);
 });
 
+// start server on port 3000
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-/*
-
--Use: https://www.exchangerate-api.com/docs/overview 
-
--ISO 4217 Three Letter Currency
-
-*/

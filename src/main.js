@@ -15,15 +15,29 @@ $(() => {
   $('#submitButton').prop('disabled', true);
 });
 
+/* 
+From Bootstrap docs:
+"Tooltips are opt-in for performance reasons, so you must initialize them yourself."
+*/
 function initializeTooltips() {
+  /* .each() jQuery method iterates over the DOM elements that are part of the jQuery object
+  select all (toolTips) elements by their 'data-bs-toggle' attribute in the DOM */
   $('[data-bs-toggle="tooltip"]').each(function () {
-    var tooltip = new bootstrap.Tooltip($(this)[0]);
+    /* bootstrap.Tooltip needs to interact directly with the native DOM API.
+     To convert a jQuery object to a plain DOM element, you need to access the first 
+     (and in this case, the only) element in the jQuery object. This is done by using 
+     the [0] index.
+     'new bootstrap.Tooltip($(this)[0])' initializes a new Bootstrap tooltip on the 
+     current element. */
+    let tooltip = new bootstrap.Tooltip($(this)[0]);
     $(this).on('inserted.bs.tooltip', function () {
+      /* attaches an event listener to the current element. This listener waits for
+      the inserted.bs.tooltip event, which is triggered when the tooltip is inserted 
+      into the DOM. */
       const currentTheme = $('html').attr('data-bs-theme');
-      const tooltipClass =
-        currentTheme === 'dark'
-          ? 'custom-tooltip-dark'
-          : 'custom-tooltip-light';
+      /* if the html element 'data-bs-theme' is set to 'dark', add class 'custom-tooltip-dark', 
+      else, add class 'custom-tooltip-light'*/
+      const tooltipClass = currentTheme === 'dark' ? 'custom-tooltip-dark' : 'custom-tooltip-light';
       $('.tooltip').addClass(tooltipClass);
     });
   });
@@ -82,11 +96,12 @@ $('#theme_toggle').on('click', () => {
     return;
   }
 
-  // Reinitialize tooltips to apply the new styles
+  // reinitialize tooltips to apply new styles
   $('[data-bs-toggle="tooltip"]').tooltip('dispose');
   initializeTooltips();
 });
 
+// if the amount to convert is less than or equal to zero, alert user
 $('#amountInput').on('focusout', () => {
   const amountInput = $('#amountInput').val();
   if (amountInput.length && Number(amountInput) <= 0) {
@@ -99,6 +114,7 @@ let leftInputValid;
 let rightInputValid;
 let inputAmountValid;
 
+// check if all user inputs are valid (leftInput last to be changed)
 $('#leftInput').on('input', () => {
   leftInputValid = true;
   if (inputAmountValid && leftInputValid && rightInputValid) {
@@ -106,6 +122,7 @@ $('#leftInput').on('input', () => {
   }
 });
 
+// check if all user inputs are valid (rightInput last to be changed)
 $('#rightInput').on('input', () => {
   rightInputValid = true;
   if (inputAmountValid && leftInputValid && rightInputValid) {
@@ -113,6 +130,7 @@ $('#rightInput').on('input', () => {
   }
 });
 
+// check if all user inputs are valid (amountInput last to be changed)
 $('#amountInput').on('change', () => {
   if (Number($('#amountInput').val()) > 0) {
     inputAmountValid = true;
@@ -132,6 +150,7 @@ $('.currCode').on('click', function () {
   return;
 });
 
+// prevent form submission if currencies selected are the same
 $('#submit_conversion').on('submit', (event) => {
   if ($('#leftInput').val() === $('#rightInput').val()) {
     alert('Currencies may not be the same')
