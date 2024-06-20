@@ -2,58 +2,38 @@ import 'animate.css';
 import '../node_modules/animate.css/animate.css';
 import '../public/main.scss';
 import $ from 'jquery';
+// import all the exported members (components, functions, and utilities) from Bootstrap module
 import * as bootstrap from 'bootstrap';
 
-
-// Assigning bootstrap to the window object
+/* make jQuery accessible to any scripts or libraries that expect window.jQuery to be present 
+(including Bootstrap.) */
+window.jQuery = $;
+// assigns the imported bootstrap namespace to the window object
 window.bootstrap = bootstrap;
 
 const lightThemeImgSrc = 'light-mode-day-sun.svg';
 const darkThemeImgSrc = 'dark-mode-night-moon.svg';
 
+// on document ready
 $(() => {
-  // initialize the html to dark theme and disable submit button
+  // initialize the html to dark theme
   $('html').attr('data-bs-theme', 'dark');
-  initializeTooltips();
+  // fill color of symbols svg background
   $('g').attr('fill', '#000000');
+  // disable submit button
   $('#submitButton').prop('disabled', true);
-});
-
-/* 
-From Bootstrap docs:
-"Tooltips are opt-in for performance reasons, so you must initialize them yourself."
-*/
-function initializeTooltips() {
-  /* .each() jQuery method iterates over the DOM elements that are part of the jQuery object
-  select all (toolTips) elements by their 'data-bs-toggle' attribute in the DOM */
-  $('[data-bs-toggle="tooltip"]').each(function () {
-    /* bootstrap.Tooltip needs to interact directly with the native DOM API.
-     To convert a jQuery object to a plain DOM element, you need to access the first 
-     (and in this case, the only) element in the jQuery object. This is done by using 
-     the [0] index.
-     'new bootstrap.Tooltip($(this)[0])' initializes a new Bootstrap tooltip on the 
-     current element. */
-    let tooltip = new bootstrap.Tooltip($(this)[0]);
-    $(this).on('inserted.bs.tooltip', function () {
-      /* attaches an event listener to the current element. This listener waits for
-      the inserted.bs.tooltip event, which is triggered when the tooltip is inserted 
-      into the DOM. */
-      const currentTheme = $('html').attr('data-bs-theme');
-      /* if the html element 'data-bs-theme' is set to 'dark', add class 'custom-tooltip-dark', 
-      else, add class 'custom-tooltip-light'*/
-      const tooltipClass = currentTheme === 'dark' ? 'custom-tooltip-dark' : 'custom-tooltip-light';
-      $('.tooltip').addClass(tooltipClass);
-    });
+  /* initializes the tooltip on all elements with the data-bs-toggle="tooltip" attribute, using 
+  the specified option, 'customClass', to apply 'custom-tooltip-dark' */
+  $('[data-bs-toggle="tooltip"]').tooltip({
+    customClass: 'custom-tooltip-dark',
   });
-}
+});
 
 // toggle theme
 $('#theme_toggle').on('click', () => {
   // change theme from dark mode to light mode on click
   if ($('html').attr('data-bs-theme') === 'dark') {
-    $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'light');
-    $('#theme_toggle_img').removeAttr('src');
     $('#theme_toggle_img').attr('src', darkThemeImgSrc);
     // toggle custom Bootsrap classes (night => day)
     $('.btn-outline-nightColor').toggleClass(
@@ -63,22 +43,25 @@ $('#theme_toggle').on('click', () => {
     $('.border-nightColor').toggleClass('border-nightColor border-dayColor');
     $('.btn-nightColor').toggleClass('btn-nightColor btn-dayColor');
     $('.btn-outline-light').toggleClass('btn-outline-light btn-outline-dark');
-
-    // Update tooltip classes
-    $('.tooltip')
-      .removeClass('custom-tooltip-dark')
-      .addClass('custom-tooltip-light');
-
     // change color of symbols svg background
-    $('g').removeAttr('fill');
     $('g').attr('fill', '#f0f0f5');
+    // select all elements in the DOM that have the attribute data-bs-toggle="tooltip"
+    const tooltipElement = $('[data-bs-toggle="tooltip"]');
+    // retrieves the Bootstrap tooltip instance associated with a specific DOM element
+    const tooltipInstance = bootstrap.Tooltip.getInstance(tooltipElement);
+    /* destroy tooltip instance, remove any stored data and event handlers related to the 
+    tooltip (necessary to reinitialize the tooltip with new configuration options) */
+    tooltipInstance.dispose();
+    // reinitialize tooltip using the option 'customClass' to apply 'custom-tooltip-light'
+    $('[data-bs-toggle="tooltip"]').tooltip({
+      customClass: 'custom-tooltip-light',
+    });
     return;
   }
+
   // change theme from light mode to dark mode on click
   if ($('html').attr('data-bs-theme') === 'light') {
-    $('html').removeAttr('data-bs-theme');
     $('html').attr('data-bs-theme', 'dark');
-    $('#theme_toggle_img').removeAttr('src');
     $('#theme_toggle_img').attr('src', lightThemeImgSrc);
     // toggle custom Bootsrap classes (day => night)
     $('.btn-outline-dayColor').toggleClass(
@@ -88,21 +71,21 @@ $('#theme_toggle').on('click', () => {
     $('.border-dayColor').toggleClass('border-dayColor border-nightColor');
     $('.btn-dayColor').toggleClass('btn-dayColor btn-nightColor');
     $('.btn-outline-dark').toggleClass('btn-outline-dark btn-outline-light');
-
-    // Update tooltip classes
-    $('.tooltip')
-      .removeClass('custom-tooltip-light')
-      .addClass('custom-tooltip-dark');
-
     // change color of symbols svg background
-    $('g').removeAttr('fill');
     $('g').attr('fill', '#000000');
+    // select all elements in the DOM that have the attribute data-bs-toggle="tooltip"
+    const tooltipElement = $('[data-bs-toggle="tooltip"]');
+    // retrieves the Bootstrap tooltip instance associated with a specific DOM element
+    const tooltipInstance = bootstrap.Tooltip.getInstance(tooltipElement);
+    /* destroy tooltip instance, remove any stored data and event handlers related to the 
+    tooltip (necessary to reinitialize the tooltip with new configuration options) */
+    tooltipInstance.dispose();
+    // reinitialize tooltip using the option 'customClass' to apply 'custom-tooltip-light'
+    $('[data-bs-toggle="tooltip"]').tooltip({
+      customClass: 'custom-tooltip-dark',
+    });
     return;
   }
-
-  // reinitialize tooltips to apply new styles
-  $('[data-bs-toggle="tooltip"]').tooltip('dispose');
-  initializeTooltips();
 });
 
 // if the amount to convert is less than or equal to zero, alert user
@@ -157,7 +140,7 @@ $('.currCode').on('click', function () {
 // prevent form submission if currencies selected are the same
 $('#submit_conversion').on('submit', (event) => {
   if ($('#leftInput').val() === $('#rightInput').val()) {
-    alert('Currencies may not be the same')
+    alert('Currencies may not be the same');
     event.preventDefault();
     return;
   }
