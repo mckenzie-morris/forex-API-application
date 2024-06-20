@@ -1,16 +1,20 @@
-// import 'animate.css';
-// import '../node_modules/animate.css/animate.css';
-// import '../public/main.scss';
-// import $ from 'jquery';
-// import 'bootstrap';
+import 'animate.css';
+import '../node_modules/animate.css/animate.css';
+import '../public/main.scss';
+import $ from 'jquery';
+import * as bootstrap from 'bootstrap';
+
+
+// Assigning bootstrap to the window object
+window.bootstrap = bootstrap;
 
 const lightThemeImgSrc = 'light-mode-day-sun.svg';
 const darkThemeImgSrc = 'dark-mode-night-moon.svg';
 
 $(() => {
-  initializeTooltips();
   // initialize the html to dark theme and disable submit button
   $('html').attr('data-bs-theme', 'dark');
+  initializeTooltips();
   $('g').attr('fill', '#000000');
   $('#submitButton').prop('disabled', true);
 });

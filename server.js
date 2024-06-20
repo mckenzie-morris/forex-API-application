@@ -24,10 +24,6 @@ app.use(express.static('public'));
 // serve static files from 'node_modules' folder in root directory
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
-///////remember to remove!!!!!!!!!!!!!!!!!!!!!///////////////////////////
-app.use(express.static('src'));
-/////////////////////////////////////////////////////////////////////////
-
 // serve static files from 'dist' folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
