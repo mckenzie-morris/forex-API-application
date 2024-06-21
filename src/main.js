@@ -27,6 +27,8 @@ $(() => {
   $('[data-bs-toggle="tooltip"]').tooltip({
     customClass: 'custom-tooltip-dark',
   });
+  // custom styling for 'amountInput' placeholder
+  $('#amountInput').addClass('darkPlaceholder')
 });
 
 // toggle theme
@@ -43,6 +45,7 @@ $('#theme_toggle').on('click', () => {
     $('.border-nightColor').toggleClass('border-nightColor border-dayColor');
     $('.btn-nightColor').toggleClass('btn-nightColor btn-dayColor');
     $('.btn-outline-light').toggleClass('btn-outline-light btn-outline-dark');
+    $('#amountInput').toggleClass('darkPlaceholder lightPlaceholder')
     // change color of symbols svg background
     $('g').attr('fill', '#f0f0f5');
     // select all elements in the DOM that have the attribute data-bs-toggle="tooltip"
@@ -71,6 +74,7 @@ $('#theme_toggle').on('click', () => {
     $('.border-dayColor').toggleClass('border-dayColor border-nightColor');
     $('.btn-dayColor').toggleClass('btn-dayColor btn-nightColor');
     $('.btn-outline-dark').toggleClass('btn-outline-dark btn-outline-light');
+    $('#amountInput').toggleClass('lightPlaceholder darkPlaceholder')
     // change color of symbols svg background
     $('g').attr('fill', '#000000');
     // select all elements in the DOM that have the attribute data-bs-toggle="tooltip"

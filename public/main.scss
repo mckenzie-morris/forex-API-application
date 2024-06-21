@@ -40,28 +40,48 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   min-width: 340px;
 }
 
-#leftInput, #rightInput:hover {
+#leftInput,
+#rightInput:hover {
   cursor: default;
 }
+
+.darkPlaceholder::placeholder {
+  color: #056400;
+}
+
+.lightPlaceholder::placeholder {
+  color: #ffc896;
+}
+
 
 .currCode:hover {
   cursor: pointer;
 }
 
 .custom-tooltip-dark .tooltip-inner {
-  background-color: #212529; 
-  color: #0dff00; 
-  font-size: 14px; 
-  border: 1px solid #0dff00; 
-  border-radius: 4px; 
+  background-color: #212529;
+  color: #0dff00;
+  font-size: 14px;
+  border: 1px solid #0dff00;
+  border-radius: 4px;
+}
+
+.custom-tooltip-dark .tooltip-arrow::before {
+  // sets top, right, bottom, and left border colors
+  border-color: #0dff00 transparent transparent transparent !important;
 }
 
 .custom-tooltip-light .tooltip-inner {
-  background-color: #f8f9fa; 
-  color: #ff7300; 
-  font-size: 14px; 
-  border: 1px solid #ff7300; 
+  background-color: #f8f9fa;
+  color: #ff7300;
+  font-size: 14px;
+  border: 1px solid #ff7300;
   border-radius: 4px;
+}
+
+.custom-tooltip-light .tooltip-arrow::before {
+  // sets top, right, bottom, and left border colors
+  border-color: #ff7300 transparent transparent transparent !important;
 }
 
 button {
@@ -78,5 +98,3 @@ input {
   max-height: 300px;
   overflow-y: auto;
 }
-
-
