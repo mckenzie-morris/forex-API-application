@@ -122,16 +122,26 @@ $('#rightInput').on('input', () => {
 });
 
 // check if all user inputs are valid (amountInput last to be changed)
-$('#amountInput').on('change', () => {
+$('#amountInput').on('input', () => {
   if (Number($('#amountInput').val()) > 0) {
     inputAmountValid = true;
   } else {
     inputAmountValid = false;
+    $('#submitButton').prop('disabled', true);
   }
-  if (inputAmountValid && leftInputValid && rightInputValid) {
+  if (leftInputValid && rightInputValid && Number($('#amountInput').val()) > 0) {
     $('#submitButton').prop('disabled', false);
   }
 });
+
+
+
+
+
+$('#amountInput').on('input', () => {
+console.log('fired')
+})
+
 
 // populate input fields from dropdowns
 $('.currCode').on('click', function () {
