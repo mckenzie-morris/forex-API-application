@@ -134,15 +134,6 @@ $('#amountInput').on('input', () => {
   }
 });
 
-
-
-
-
-$('#amountInput').on('input', () => {
-console.log('fired')
-})
-
-
 // populate input fields from dropdowns
 $('.currCode').on('click', function () {
   const listItemElmt = $(this).data('list_item_elmt');
