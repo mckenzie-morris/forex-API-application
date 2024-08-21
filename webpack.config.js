@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 variables passed to the configuration. */
 export default (env) => {
   const plugins = [];
-/* The ..."--env analyze=true" part of the "analyze" script 
+  /* The ..."--env analyze=true" part of the "analyze" script 
 tells Webpack to pass an object { analyze: true } as the env parameter 
 to the configuration function. */
   if (env && env.analyze) {
@@ -18,7 +18,7 @@ to the configuration function. */
   }
 
   return {
-    mode: 'development',
+    mode: 'production',
     entry: path.resolve(__dirname, 'src/main.js'),
     output: {
       path: path.resolve(__dirname, 'dist'),
