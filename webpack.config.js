@@ -24,7 +24,7 @@ to the configuration function. */
       path: path.resolve(__dirname, 'dist'),
       filename: '[name]-bundle.js',
       clean: true, // Clean the output directory before emit.
-      assetModuleFilename: "[name][ext]",
+      assetModuleFilename: '[name][ext]',
     },
 
     module: {
@@ -45,7 +45,7 @@ to the configuration function. */
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: "asset/resource",
+          type: 'asset/resource',
         },
       ],
     },
