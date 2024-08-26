@@ -26,22 +26,7 @@ to the configuration function. */
       clean: true, // Clean the output directory before emit.
       assetModuleFilename: "[name][ext]",
     },
-    resolve: {
-      fallback: {
-        url: false,
-        path: false,
-        util: false,
-        stream: false,
-        buffer: false,
-        string_decoder: false,
-        querystring: false,
-        http: false,
-        crypto: false,
-        zlib: false,
-        fs: false,
-        net: false,
-      },
-    },
+
     module: {
       rules: [
         {
