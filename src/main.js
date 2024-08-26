@@ -1,6 +1,8 @@
 import 'animate.css';
 import '../node_modules/animate.css/animate.css';
 import '../public/main.scss';
+import lightThemeImgSrc from '../public/light-mode-day-sun.svg';
+import darkThemeImgSrc from '../public/dark-mode-night-moon.svg';
 import $ from 'jquery';
 // import all the exported members (components, functions, and utilities) from Bootstrap module
 import * as bootstrap from 'bootstrap';
@@ -10,9 +12,6 @@ import * as bootstrap from 'bootstrap';
 window.jQuery = $;
 // assigns the imported bootstrap namespace to the window object
 window.bootstrap = bootstrap;
-
-const lightThemeImgSrc = 'light-mode-day-sun.svg';
-const darkThemeImgSrc = 'dark-mode-night-moon.svg';
 
 // on document ready
 $(() => {
@@ -28,7 +27,7 @@ $(() => {
     customClass: 'custom-tooltip-dark',
   });
   // custom styling for 'amountInput' placeholder
-  $('#amountInput').addClass('darkPlaceholder')
+  $('#amountInput').addClass('darkPlaceholder');
 });
 
 // toggle theme
@@ -45,7 +44,7 @@ $('#theme_toggle').on('click', () => {
     $('.border-nightColor').toggleClass('border-nightColor border-dayColor');
     $('.btn-nightColor').toggleClass('btn-nightColor btn-dayColor');
     $('.btn-outline-light').toggleClass('btn-outline-light btn-outline-dark');
-    $('#amountInput').toggleClass('darkPlaceholder lightPlaceholder')
+    $('#amountInput').toggleClass('darkPlaceholder lightPlaceholder');
     // change color of symbols svg background
     $('g').attr('fill', '#f0f0f5');
     // select all elements in the DOM that have the attribute data-bs-toggle="tooltip"
@@ -74,7 +73,7 @@ $('#theme_toggle').on('click', () => {
     $('.border-dayColor').toggleClass('border-dayColor border-nightColor');
     $('.btn-dayColor').toggleClass('btn-dayColor btn-nightColor');
     $('.btn-outline-dark').toggleClass('btn-outline-dark btn-outline-light');
-    $('#amountInput').toggleClass('lightPlaceholder darkPlaceholder')
+    $('#amountInput').toggleClass('lightPlaceholder darkPlaceholder');
     // change color of symbols svg background
     $('g').attr('fill', '#000000');
     // select all elements in the DOM that have the attribute data-bs-toggle="tooltip"
@@ -129,7 +128,11 @@ $('#amountInput').on('input', () => {
     inputAmountValid = false;
     $('#submitButton').prop('disabled', true);
   }
-  if (leftInputValid && rightInputValid && Number($('#amountInput').val()) > 0) {
+  if (
+    leftInputValid &&
+    rightInputValid &&
+    Number($('#amountInput').val()) > 0
+  ) {
     $('#submitButton').prop('disabled', false);
   }
 });

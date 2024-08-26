@@ -19,7 +19,7 @@ let rightCurrency = undefined;
 let baseAmount = undefined;
 
 // serve static files from 'public' folder in root directory
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 // serve static files from 'node_modules' folder in root directory
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
